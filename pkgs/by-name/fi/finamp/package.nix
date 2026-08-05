@@ -15,7 +15,7 @@
   dart,
 }:
 let
-  version = "0.9.24-beta";
+  version = "0.9.25-beta";
 in
 flutter341.buildFlutterApplication {
   inherit version;
@@ -24,7 +24,7 @@ flutter341.buildFlutterApplication {
     owner = "finamp-app";
     repo = "finamp";
     rev = version;
-    hash = "sha256-o7q7Yr47maTrt4CG3PiV9Fdhy77ToboVdd8olZFfFts=";
+    hash = "sha256-eoVCQiLWaGk291S2DhRb+ucWsakVmxTLKkJrpBeRVj4=";
   };
 
   pubspecLock = lib.importJSON ./pubspec.lock.json;
@@ -77,7 +77,7 @@ flutter341.buildFlutterApplication {
           cat $src/pubspec.lock | yq > $out
         '';
     updateScript = _experimental-update-script-combinators.sequence [
-      (nix-update-script { extraArgs = [ "--version=unstable" ]; })
+      (nix-update-script { extraArgs = [ "--version=0.9.25-beta" ]; })
       (
         (_experimental-update-script-combinators.copyAttrOutputToFile "finamp.pubspecSource" ./pubspec.lock.json)
         // {
